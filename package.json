@@ -1,0 +1,18 @@
+{
+  "name": "buildings-residents",
+  "version": "1.0.0",
+  "description": "A package for working with Buildings and Residents",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "n"
+  },
+  "author": "Torrel",
+  "license": "ISC",
+  "devDependencies": {
+    "axios": "^1.2.2"
+  }
+}
