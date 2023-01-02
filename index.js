@@ -12,12 +12,11 @@ class Resident {
       const response = await axios.get(residentEndpoint);
       if (response.status == 200) {
         this.resident = response.data;
-        console.log(`Retrieved resident with name: ${this.resident.firstName}`);
       } else {
         throw new Error(`HTTP error: ${response.status}`);
       }
     } catch(e) {
-      console.log(e)
+      // ...
     }
   }
 }
@@ -53,8 +52,16 @@ class ResidentialBuilding {
   }
 
   retrieveResidents = async () => {
-    console.log('Retrieving first resident');
-    const resident = new Resident(this.building.residents[0]);
+    try {
+      this.residents = this.building.residents.map( async residentID => {
+        const resident = new Resident(this.building.residents[residentID]);
+        return resident;
+      })
+    } catch(e) {
+      console.log(e);
+    }
+
+    console.log(`${this.residents.length} residents retrieved`);
   }
 }
 
